@@ -19,17 +19,14 @@
         line-height: 1.6;
         color: #333;
         background-color: #f8fafc;
-        max-width: 880px;
-        margin: 0 auto;
-        padding: 32px 80px;
-        position: relative;
-        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
 
-      .container {
-        max-width: 800px;
+      .page-container {
+        max-width: 1100px;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 30px 20px;
       }
 
       /* Sticky Header */
@@ -40,14 +37,14 @@
         top: 0;
         z-index: 100;
         padding: 15px 0;
-        margin: -32px -80px 30px -80px;
+        width: 100%;
       }
 
       .header-content {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        max-width: 800px;
+        max-width: 1100px;
         margin: 0 auto;
         padding: 0 20px;
       }
@@ -79,11 +76,6 @@
         border-color: #2563eb;
       }
 
-      /* Main Content */
-      .main-content {
-        padding: 0;
-      }
-
       .section {
         background: white;
         margin-bottom: 30px;
@@ -107,22 +99,31 @@
         font-size: 1.2rem;
       }
 
-      /* Welcome Section */
-      .welcome {
-        text-align: center;
+      /* Hero Section - Full Width */
+      .hero-full {
+        width: 100%;
+        position: relative;
+        margin: 0;
+        height: 420px;
         background-image:
-          linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%),
+          linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
           url('https://i.postimg.cc/4xmVSkXy/17103581-1419343638117572-164282736432649736-n-1.jpg?v=2');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        color: white;
-        border-radius: 12px;
-        min-height: 400px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        text-align: center;
+        color: white;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        padding: 0 20px;
+        max-width: 800px;
       }
 
       .property-name {
@@ -277,12 +278,12 @@
 
       /* Mobile Responsive */
       @media (max-width: 768px) {
-        body {
-          padding: 15px;
+        .hero-full {
+          height: 300px;
         }
 
-        .header {
-          margin: -15px -15px 20px -15px;
+        .page-container {
+          padding: 20px 16px;
         }
 
         .section {
@@ -300,10 +301,6 @@
         .header-content {
           flex-direction: column;
           gap: 15px;
-        }
-
-        .welcome {
-          background-attachment: scroll;
         }
       }
     </style>
@@ -324,10 +321,9 @@
       </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-      <!-- Welcome Section -->
-      <section class="section welcome">
+    <!-- Hero Section - Full Width -->
+    <section class="hero-full">
+      <div class="hero-content">
         <div class="lang-content active" data-lang="en">
           <h1 class="property-name">Steni House Tinos</h1>
           <p class="property-subtitle">Steni, Tinos – Traditional Cycladic House</p>
@@ -344,8 +340,11 @@
             περιέχει όλα όσα χρειάζεστε για μια άνετη και αξέχαστη διαμονή.
           </p>
         </div>
-      </section>
+      </div>
+    </section>
 
+    <!-- Main Content -->
+    <main class="page-container">
       <!-- Quick Information -->
       <section class="section">
         <div class="lang-content active" data-lang="en">
@@ -852,10 +851,9 @@
           <p style="margin-top: 20px">Ευχαριστούμε που μείνατε μαζί μας! Θα εκτιμούσαμε πολύ τα σχόλιά σας.</p>
         </div>
       </section>
-    </main>
 
-    <!-- Footer -->
-    <footer class="section" style="text-align: center; margin-top: 50px">
+      <!-- Footer -->
+      <footer class="section" style="text-align: center; margin-top: 50px">
       <div class="lang-content active" data-lang="en">
         <p><strong>Steni House Tinos</strong></p>
         <p>Phone: +306944898468 | Email: info@stenihousetinos.gr</p>
@@ -894,7 +892,8 @@
           Σας ευχαριστούμε που επιλέξατε το κατάλυμά μας. Ελπίζουμε να έχετε μια υπέροχη διαμονή!
         </p>
       </div>
-    </footer>
+      </footer>
+    </main>
 
     <script>
       // Language switching functionality
