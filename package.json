@@ -1,0 +1,13 @@
+{
+  "name": "steni-house-guestbook",
+  "version": "1.0.0",
+  "description": "Digital Guestbook for Steni House Tinos",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
