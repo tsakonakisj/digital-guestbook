@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <title>Digital Guestbook - Steni House Tinos</title>
+    <link rel="icon" type="image/png" href="https://page.gensparksite.com/v1/base64_upload/d31076300d98577a51ed2a78dd7e02e2" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f8fafc;
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 32px 80px;
+        position: relative;
+        box-sizing: border-box;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Sticky Header */
+      .header {
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 15px 0;
+        margin: -32px -80px 30px -80px;
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .logo {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #2563eb;
+      }
+
+      .language-switcher {
+        display: flex;
+        gap: 10px;
+      }
+
+      .lang-btn {
+        background: none;
+        border: 2px solid #e5e7eb;
+        padding: 5px 12px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.3s;
+      }
+
+      .lang-btn.active {
+        background: #2563eb;
+        color: white;
+        border-color: #2563eb;
+      }
+
+      /* Main Content */
+      .main-content {
+        padding: 0;
+      }
+
+      .section {
+        background: white;
+        margin-bottom: 30px;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .section h2 {
+        color: #1f2937;
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .section h3 {
+        color: #374151;
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+      }
+
+      /* Welcome Section */
+      .welcome {
+        text-align: center;
+        background-image:
+          linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%),
+          url('https://i.postimg.cc/4xmVSkXy/17103581-1419343638117572-164282736432649736-n-1.jpg?v=2');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: white;
+        border-radius: 12px;
+        min-height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .property-name {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+      }
+
+      .property-subtitle {
+        font-size: 1.2rem;
+        opacity: 0.95;
+        margin-bottom: 20px;
+        text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+      }
+
+      .welcome-intro {
+        font-size: 1rem;
+        opacity: 0.95;
+        max-width: 600px;
+        margin: 0 auto;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+      }
+
+      /* Info Cards */
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+
+      .info-card {
+        background: #f8fafc;
+        padding: 20px;
+        border-radius: 8px;
+        border-left: 4px solid #2563eb;
+      }
+
+      .info-card h4 {
+        color: #1f2937;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .info-card p {
+        color: #6b7280;
+        margin-bottom: 10px;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        background: #2563eb;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-secondary {
+        background: #10b981;
+      }
+
+      .btn-copy {
+        background: #f59e0b;
+      }
+
+      /* Lists */
+      ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      ul li {
+        margin-bottom: 15px;
+        padding-left: 25px;
+        position: relative;
+      }
+
+      ul li:before {
+        content: '•';
+        color: #2563eb;
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+      }
+
+      /* Area Guide with Thumbnails */
+      .area-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 20px;
+        padding: 15px;
+        background: #f8fafc;
+        border-radius: 8px;
+        border-left: 4px solid #2563eb;
+      }
+
+      .area-thumbnail {
+        width: 80px;
+        height: 80px;
+        border-radius: 8px;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+
+      .area-content {
+        flex: 1;
+      }
+
+      .area-content strong {
+        color: #1f2937;
+        font-size: 1rem;
+      }
+
+      .area-content p {
+        margin: 5px 0 0 0;
+        color: #6b7280;
+        font-size: 0.9rem;
+      }
+
+      /* Map Container */
+      .map-container {
+        margin: 20px 0;
+        border-radius: 8px;
+        height: 300px;
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      /* Hidden content for different languages */
+      .lang-content {
+        display: none;
+      }
+
+      .lang-content.active {
+        display: block;
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        body {
+          padding: 15px;
+        }
+
+        .header {
+          margin: -15px -15px 20px -15px;
+        }
+
+        .section {
+          padding: 20px;
+        }
+
+        .property-name {
+          font-size: 2rem;
+        }
+
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .header-content {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .welcome {
+          background-attachment: scroll;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sticky Header -->
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">
+          <i class="fas fa-home"></i>
+          <span class="lang-content active" data-lang="en">Digital Guestbook</span>
+          <span class="lang-content" data-lang="gr">Ψηφιακό Βιβλίο Επισκεπτών</span>
+        </div>
+        <div class="language-switcher">
+          <button class="lang-btn active" onclick="switchLanguage('en')">English</button>
+          <button class="lang-btn" onclick="switchLanguage('gr')">Ελληνικά</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Welcome Section -->
+      <section class="section welcome">
+        <div class="lang-content active" data-lang="en">
+          <h1 class="property-name">Steni House Tinos</h1>
+          <p class="property-subtitle">Steni, Tinos – Traditional Cycladic House</p>
+          <p class="welcome-intro">
+            Welcome to your home away from home! We're delighted to have you stay with us. This digital guide contains
+            everything you need for a comfortable and memorable stay.
+          </p>
+        </div>
+        <div class="lang-content" data-lang="gr">
+          <h1 class="property-name">Steni House Tinos</h1>
+          <p class="property-subtitle">Στενή, Τήνος – Παραδοσιακό Κυκλαδίτικο Σπίτι</p>
+          <p class="welcome-intro">
+            Καλώς ήρθατε στο δεύτερο σπίτι σας! Είμαστε ενθουσιασμένοι που μένετε μαζί μας. Αυτός ο ψηφιακός οδηγός
+            περιέχει όλα όσα χρειάζεστε για μια άνετη και αξέχαστη διαμονή.
+          </p>
+        </div>
+      </section>
+
+      <!-- Quick Information -->
+      <section class="section">
+        <div class="lang-content active" data-lang="en">
+          <h2><i class="fas fa-info-circle"></i>Quick Information</h2>
+        </div>
+        <div class="lang-content" data-lang="gr">
+          <h2><i class="fas fa-info-circle"></i>Γρήγορες Πληροφορίες</h2>
+        </div>
+
+        <div class="info-grid">
+          <!-- Wi-Fi Card -->
+          <div class="info-card">
+            <div class="lang-content active" data-lang="en">
+              <h4><i class="fas fa-wifi"></i>Wi-Fi Access</h4>
+              <p><strong>Network:</strong> stenihousetinos</p>
+              <p><strong>Password:</strong> welcome123</p>
+              <button class="btn btn-copy" onclick="copyToClipboard('welcome123', 'Wi-Fi password copied!')">
+                <i class="fas fa-copy"></i>Copy Password
+              </button>
+            </div>
+            <div class="lang-content" data-lang="gr">
+              <h4><i class="fas fa-wifi"></i>Πρόσβαση Wi-Fi</h4>
+              <p><strong>Δίκτυο:</strong> stenihousetinos</p>
+              <p><strong>Κωδικός:</strong> welcome123</p>
+              <button class="btn btn-copy" onclick="copyToClipboard('welcome123', 'Ο κωδικός Wi-Fi αντιγράφηκε!')">
+                <i class="fas fa-copy"></i>Αντιγραφή Κωδικού
+              </button>
+            </div>
+          </div>
+
+          <!-- Check-in/out Card -->
+          <div class="info-card">
+            <div class="lang-content active" data-lang="en">
+              <h4><i class="fas fa-clock"></i>Check-in & Check-out</h4>
+              <p><strong>Check-in:</strong> Free</p>
+              <p><strong>Check-out:</strong> until 12:00</p>
+            </div>
+            <div class="lang-content" data-lang="gr">
+              <h4><i class="fas fa-clock"></i>Άφιξη & Αναχώρηση</h4>
+              <p><strong>Άφιξη:</strong> ελεύθερη</p>
+              <p><strong>Αναχώρηση:</strong> μέχρι 12:00</p>
+            </div>
+          </div>
+
+          <!-- Address Card -->
+          <div class="info-card">
+            <div class="lang-content active" data-lang="en">
+              <h4><i class="fas fa-map-marker-alt"></i>Address</h4>
+              <p>Eparchiaki odos, Στενή 842 00</p>
+              <a
+                href="https://www.google.com/maps/search/Eparchiaki+odos,+Steni+842+00,+Greece"
+                target="_blank"
+                class="btn"
+              >
+                <i class="fas fa-map"></i>Open in Google Maps
+              </a>
+            </div>
+            <div class="lang-content" data-lang="gr">
+              <h4><i class="fas fa-map-marker-alt"></i>Διεύθυνση</h4>
+              <p>Επαρχιακή Οδός, Στενή 842 00</p>
+              <a
+                href="https://www.google.com/maps/search/Eparchiaki+odos,+Steni+842+00,+Greece"
+                target="_blank"
+                class="btn"
+              >
+                <i class="fas fa-map"></i>Άνοιγμα στο Google Maps
+              </a>
+            </div>
+          </div>
+
+          <!-- Contact Card -->
+          <div class="info-card">
+            <div class="lang-content active" data-lang="en">
+              <h4><i class="fas fa-phone"></i>Contact</h4>
+              <p><strong>Phone:</strong> +306944898468</p>
+              <a
+                href="https://wa.me/306944898468?text=Hello%2C%20I%27m%20staying%20at%20Steni%20House%20Tinos.%20I%20need%20assistance%20with%3A%20______"
+                target="_blank"
+                class="btn btn-secondary"
+              >
+                <i class="fab fa-whatsapp"></i>WhatsApp Message
+              </a>
+            </div>
+            <div class="lang-content" data-lang="gr">
+              <h4><i class="fas fa-phone"></i>Επικοινωνία</h4>
+              <p><strong>Τηλέφωνο:</strong> +306944898468</p>
+              <a
+                href="https://wa.me/306944898468?text=Γεια%20σας%2C%20μένω%20στο%20Steni%20House%20Tinos.%20Χρειάζομαι%20βοήθεια%20με%3A%20______"
+                target="_blank"
+                class="btn btn-secondary"
+              >
+                <i class="fab fa-whatsapp"></i>Μήνυμα WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Access Instructions & Parking -->
+      <section class="section">
+        <div class="lang-content active" data-lang="en">
+          <h2><i class="fas fa-route"></i>Access Instructions & Parking</h2>
+          <h3>Getting Here</h3>
+          <p>
+            Exit Tinos Main Port and take the uphill main road towards the inland villages. Google Maps. Follow signs
+            for Triantaros → Dyo Choria → Arnados → Steni (the "old" scenic road to the villages).
+          </p>
+          <h3>Parking Information</h3>
+          <p>Closed free parking inside the area of the house.</p>
+        </div>
+        <div class="lang-content" data-lang="gr">
+          <h2><i class="fas fa-route"></i>Οδηγίες Πρόσβασης & Parking</h2>
+          <h3>Πώς να φτάσετε</h3>
+          <p>
+            Βγείτε από το κύριο λιμάνι της Τήνου και πάρτε τον ανηφορικό κεντρικό δρόμο προς τα χωριά της ενδοχώρας.
+            Ακολουθήστε στο Google Maps. Στρίψτε σύμφωνα με τις πινακίδες για Τριαντάρος → Δύο Χωριά → Αρνάδος → Στενή
+            (ο «παλιός» γραφικός δρόμος προς τα χωριά).
+          </p>
+          <h3>Πληροφορίες Στάθμευσης</h3>
+          <p>Κλειστό ελεύθερο πάρκινγκ στην περιοχή του σπιτιού.</p>
+        </div>
+
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.1064394821105!2d25.19602217643069!3d37.57611122357805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a2ebfc6a38e195%3A0x2fbb8150aae27cc5!2sSteni%20House%20Tinos!5e0!3m2!1sel!2sgr!4v1756887637295!5m2!1sel!2sgr"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </section>
+
+      <!-- Self Check-in Instructions -->
+      <section class="section">
+        <div class="lang-content active" data-lang="en">
+          <h2><i class="fas fa-key"></i>Self Check-in Instructions</h2>
+          <h3>Check-in Steps</h3>
+          <p>Keys will be provided by arrangement.</p>
+        </div>
+        <div class="lang-content" data-lang="gr">
+          <h2><i class="fas fa-key"></i>Οδηγίες Αυτό-Check-in</h2>
+          <h3>Βήματα Check-in</h3>
+          <p>Τα κλειδιά θα παραδοθούν κατόπιν συνεννόησης.</p>
+        </div>
+      </section>
+
+      <!-- House Rules -->
+      <section class="section">
+        <div class="lang-content active" data-lang="en">
+          <h2><i class="fas fa-home"></i>House Rules</h2>
+          <ul>
+            <li>Respect the neighborhood. Keep noise low, especially midday and at night.</li>
+            <li>No parties or events.</li>
+            <li>Only registered guests may stay.</li>
+            <li>Pets only upon request.</li>
+            <li>Water is precious on the island. Take short showers.</li>
+            <li>Plumbing is sensitive. Use the bathroom bin for paper.</li>
+            <li>Tinos can be windy. Secure shutters/umbrellas and close balcony doors.</li>
+          </ul>
+        </div>
+        <div class="lang-content" data-lang="gr">
+          <h2><i class="fas fa-home"></i>Κανόνες Σπιτιού</h2>
+          <ul>
+            <li>Σεβαστείτε τη γειτονιά. Κρατήστε χαμηλά τον θόρυβο, ιδιαίτερα το μεσημέρι και το βράδυ.</li>
+            <li>Δεν επιτρέπονται πάρτι ή εκδηλώσεις.</li>
+            <li>Μόνο οι δηλωμένοι επισκέπτες μπορούν να διαμείνουν.</li>
+            <li>Κατοικίδια μόνο κατόπιν αιτήματος.</li>
+            <li>Το νερό είναι πολύτιμο στο νησί. Κάντε σύντομα ντους.</li>
+            <li>Η αποχέτευση είναι ευαίσθητη. Χρησιμοποιείτε τον κάδο του μπάνιου για το χαρτί.</li>
+            <li>Στην Τήνο φυσάει συχνά. Ασφαλίστε τα παντζούρια/ομπρέλες και κλείστε τις μπαλκονόπορτες.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Devices & Utilities -->
+      <section class="section">
+        <div class="lang-content active" data-lang="en">
+          <h2><i class="fas fa-cogs"></i>Devices & Utilities</h2>
+          <h3>Hot Water</h3>
+          <p>We have a solar water heater. Please do not switch on the electric boiler.</p>
+          <h3>Trash & Recycling</h3>
+          <p>
+            The trash bins are about 200 m from the house, on your left, just before "Apodrasi" tavern/café. Please
+            dispose of trash in tied bags and use recycling where available.
+          </p>
+        </div>
+        <div class="lang-content" data-lang="gr">
+          <h2><i class="fas fa-cogs"></i>Συσκευές & Χρήσιμα</h2>
+          <h3>Ζεστό Νερό</h3>
+          <p>Έχουμε ηλιακό θερμοσίφωνα. Παρακαλούμε να μην ανοίγετε τον ηλεκτρικό θερμοσίφωνα.</p>
+          <h3>Σκουπίδια & Ανακύκλωση</h3>
+          <p>
+            Οι κάδοι απορριμμάτων βρίσκονται περίπου 200 μ. από το σπίτι, αριστερά σας, λίγο πριν την ταβέρνα/καφέ
+            «Απόδραση». Παρακαλούμε να πετάτε τα σκουπίδια σε δεμένες σακούλες και να χρησιμοποιείτε την ανακύκλωση όπου
+            υπάρχει.
+          </p>
+        </div>
+      </section>
+
+      <!-- Emergency & Help -->
+      <section class="section">
+        <div class="lang-content active" data-lang="en">
+          <h2><i class="fas fa-exclamation-triangle"></i>Need Help?</h2>
+          <p>For any issues during your stay, don't hesitate to contact us:</p>
+          <div style="display: flex; gap: 15px; margin-top: 15px; flex-wrap: wrap">
+            <a
+              href="https://wa.me/306944898468?text=Hello%2C%20I%27m%20staying%20at%20Steni%20House%20Tinos.%20Issue%3A%20______.%20Photo%3A%20______"
+              target="_blank"
+              class="btn btn-secondary"
+            >
+              <i class="fab fa-whatsapp"></i>WhatsApp Message
+            </a>
+            <a href="tel:+306944898468" class="btn"> <i class="fas fa-phone"></i>Call Now </a>
+          </div>
+        </div>
+        <div class="lang-content" data-lang="gr">
+          <h2><i class="fas fa-exclamation-triangle"></i>Χρειάζεστε Βοήθεια;</h2>
+          <p>Για οποιοδήποτε πρόβλημα κατά τη διαμονή σας, μη διστάσετε να επικοινωνήσετε μαζί μας:</p>
+          <div style="display: flex; gap: 15px; margin-top: 15px; flex-wrap: wrap">
+            <a
+              href="https://wa.me/306944898468?text=Γεια%2C%20μένω%20στο%20Steni%20House%20Tinos.%20Πρόβλημα%3A%20______.%20Φωτογραφία%3A%20______"
+              target="_blank"
+              class="btn btn-secondary"
+            >
+              <i class="fab fa-whatsapp"></i>Μήνυμα WhatsApp
+            </a>
+            <a href="tel:+306944898468" class="btn"> <i class="fas fa-phone"></i>Κλήση Τώρα </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Area Guide -->
+      <section class="section">
+        <div class="lang-content active" data-lang="en">
+          <h2><i class="fas fa-map"></i>Area Guide</h2>
+
+          <h3>Coffee & Breakfast</h3>
+          <div class="area-item">
+            <img
+              src="https://page.gensparksite.com/v1/base64_upload/7fcc13f21fac3ff5364b18ec1c618303"
+              alt="Amiseli"
+              class="area-thumbnail"
+            />
+            <div class="area-content">
+              <strong>Amiseli</strong>
+              <p>
+                Amiseli is an all-day café-restaurant on Steni's main square, under the plane tree. It opens for coffee
+                and breakfast, then serves Tinian creative dishes and meze, with a solid list of wines and cocktails.
+                Relaxed setting right in the heart of the village. <em>(5min walk)</em>
+              </p>
+            </div>
+          </div>
+
+          <div class="area-item">
+            <img
+              src="https://page.gensparksite.com/v1/base64_upload/d2ff35f83af811b60e2604d269b60cac"
+              alt="Apodrasi"
+              class="area-thumbnail"
+            />
+            <div class="area-content">
+              <strong>Apodrasi</strong>
+              <p>
+                Apodrasi is a café-bar and tavern in the center of Steni. It serves breakfast and coffee in the morning,
+                handmade sweets/crepes during the day, and drinks or cocktails in the evening—often with live-music
+                nights. <em>(3min walk)</em>
+              </p>
+            </div>
+          </div>
+
+          <h3>Restaurants</h3>
+          <div class="area-item">
+            <img
+              src="https://page.gensparksite.com/v1/base64_upload/fac348b4b334e08bee3355604592f0a0"
+              alt="Douar-Platanos"
+              class="area-thumbnail"
+            />
+            <div class="area-content">
+              <strong>Douar-Platanos</strong>
+              <p>
+                Douar (Taverna Platanos) is a classic, family-run meat taverna on Steni's square, right under the big
+                plane tree. It's known for excellent charcoal-grilled meats and produce sourced from Tinos—simple,
+                traditional food done right. A long-time village favorite with a warm, old-school vibe.
+                <em>(3min walk)</em>
+              </p>
+            </div>
+          </div>
+
+          <div class="area-item">
+            <img
+              src="https://page.gensparksite.com/v1/base64_upload/ded31a3a73bfd6ca6c05ec171a7cd49a"
+              alt="Vaptistis winery"
+              class="area-thumbnail"
+            />
+            <div class="area-content">
+              <strong>Vaptistis winery</strong>
+              <p>
+                Vaptistis Winery is a boutique, family-run winery in Steni village, Tinos. They offer tours and tastings
+                with local snacks, showcasing Tinos grapes (e.g., Assyrtiko and a rosé from local varieties). You can
+                book online. <em>(2min walk)</em>
+              </p>
+            </div>
+          </div>
+
+          <h3>Beaches</h3>
+          <div class="area-item">
+            <img
+              src="https://page.gensparksite.com/v1/base64_upload/2176fd44176d10dd6deca6e1b20fc3b0"
+              alt="Santa Margarita"
+              class="area-thumbnail"
+            />
+            <div class="area-content">
+              <strong>Santa Margarita</strong>
+              <p>
+                Santa Margarita Beach is a quiet, unorganized sandy cove on the east side of Tinos, about 15–17 km from
+                town and ~4.5 km past Steni. There are no facilities—bring water and snacks. <em>(14min drive)</em>
+              </p>
+            </div>
+          </div>
+
+          <div class="area-item">
+            <img
+              src="https://page.gensparksite.com/v1/base64_upload/9487282d632e59ff350ccc91c07f9109"
+              alt="Livada Beach"
+              class="area-thumbnail"
+            />
+            <div class="area-content">
+              <strong>Livada Beach</strong>
+              <p>
+                Livada Beach is a remote, unorganized cove on Tinos' north side, reached via a final stretch of dirt
+                road past Steni/Myrsini. It's famous for its wind- and wave-sculpted rocks and a small stream/wetland at
+                one end—wild scenery, great for photos. <em>(15min drive)</em>
+              </p>
+            </div>
+          </div>
+
+          <h3>One-Day Itinerary</h3>
+          <p><strong>Plan A (with strong meltemi / north wind)</strong></p>
+          <ul>
+            <li>09:00 | Depart from Steni.</li>
+            <li>
+              10:00 | South/East beaches (more sheltered): Agios Ioannis Porto or Agios Fokas (long sandy beaches), or
+              Pachia Ammos (short walk over a sand dune).
+            </li>
+            <li>13:30 | Lunch in Tinos Town or near the beach.</li>
+            <li>16:00 | Volax quick stop for the rock landscape.</li>
+            <li>18:00 | Sunset in Isternia or Kardiani.</li>
+            <li>20:30 | Return to Steni.</li>
+          </ul>
+        </div>
+        <div class="lang-content" data-lang="gr">
+          <h2><i class="fas fa-map"></i>Οδηγός Περιοχής</h2>
+
+          <h3>Καφές & Πρωινό</h3>
+          <div class="area-item">
+            <img
+              src="https://page.gensparksite.com/v1/base64_upload/7fcc13f21fac3ff5364b18ec1c618303"
+              alt="Amiseli"
+              class="area-thumbnail"
+            />
+            <div class="area-content">
+              <strong>Amiseli</strong>
+              <p>
+                Το Amiseli είναι ένα all-day καφέ-εστιατόριο στην κεντρική πλατεία της Στενής, κάτω από τον πλάτανο.
+                <em>(5 λεπτά με τα πόδια)</em>
+              </p>
+            </div>
+          </div>
+
+          <div class="area-item">
+            <img
+              src="https://page.gensparksite.com/v1/base64_upload/d2ff35f83af811b60e2604d269b60cac"
+              alt="Απόδραση"
+              class="area-thumbnail"
+            />
+            <div class="area-content">
+              <strong>Απόδραση</strong>
+              <p>Το Apodrasi είναι καφέ-μπαρ και ταβέρνα στο κέντρο της Στενής. <em>(3 λεπτά με τα πόδια)</em></p>
+            </div>
+          </div>
+
+          <h3>Εστιατόρια</h3>
+          <div class="area-item">
+            <img
+              src="https://page.gensparksite.com/v1/base64_upload/fac348b4b334e08bee3355604592f0a0"
+              alt="Ντουάρ-Πλάτανος"
+              class="area-thumbnail"
+            />
+            <div class="area-content">
+              <strong>Ντουάρ-Πλάτανος</strong>
+              <p>
+                Ντουάρ (Ταβέρνα Πλάτανος) είναι μια κλασική, οικογενειακή ταβέρνα με κρέας.
+                <em>(3 λεπτά με τα πόδια)</em>
+              </p>
+            </div>
+          </div>
+
+          <div class="area-item">
+            <img
+              src="https://page.gensparksite.com/v1/base64_upload/ded31a3a73bfd6ca6c05ec171a7cd49a"
+              alt="Οινοποιείο Βαπτιστής"
+              class="area-thumbnail"
+            />
+            <div class="area-content">
+              <strong>Οινοποιείο Βαπτιστής</strong>
+              <p>
+                Το οινοποιείο Vaptistis είναι ένα μικρό, οικογενειακό οινοποιείο στο χωριό Στενή.
+                <em>(2 λεπτά με τα πόδια)</em>
+              </p>
+            </div>
+          </div>
+
+          <h3>Παραλίες</h3>
+          <div class="area-item">
+            <img
+              src="https://page.gensparksite.com/v1/base64_upload/2176fd44176d10dd6deca6e1b20fc3b0"
+              alt="Santa Margarita"
+              class="area-thumbnail"
+            />
+            <div class="area-content">
+              <strong>Santa Margarita</strong>
+              <p>
+                Santa Margarita Beach είναι μια ήσυχη, μη οργανωμένη αμμουδιά στην ανατολική πλευρά της Τήνου.
+                <em>(14 λεπτά οδήγηση)</em>
+              </p>
+            </div>
+          </div>
+
+          <div class="area-item">
+            <img
+              src="https://page.gensparksite.com/v1/base64_upload/9487282d632e59ff350ccc91c07f9109"
+              alt="Livada Beach"
+              class="area-thumbnail"
+            />
+            <div class="area-content">
+              <strong>Livada Beach</strong>
+              <p>
+                Livada Beach είναι μια απομακρυσμένη, μη οργανωμένη παραλία στη βόρεια πλευρά της Τήνου.
+                <em>(15 λεπτά οδήγηση)</em>
+              </p>
+            </div>
+          </div>
+
+          <h3>Διαδρομή Μίας Ημέρας</h3>
+          <p><strong>Σχέδιο A (με δυνατό μελτέμι / βόρειο άνεμο)</strong></p>
+          <ul>
+            <li>09:00 | Αναχώρηση από τη Στενή.</li>
+            <li>
+              10:00 | Νότιες/Ανατολικές παραλίες (πιο προστατευμένες): Άγιος Ιωάννης Πόρτο ή Άγιος Φωκάς, ή Παχιά Άμμος.
+            </li>
+            <li>13:30 | Μεσημεριανό γεύμα στη Χώρα της Τήνου ή κοντά στην παραλία.</li>
+            <li>16:00 | Γρήγορη στάση στο Βώλαξ για το τοπίο με τις πέτρες.</li>
+            <li>18:00 | Ηλιοβασίλεμα στην Ιστέρνια ή στην Καρδιανή.</li>
+            <li>20:30 | Επιστροφή στη Στενή.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Extra Services -->
+      <section class="section">
+        <div class="lang-content active" data-lang="en">
+          <h2><i class="fas fa-concierge-bell"></i>Extra Services</h2>
+
+          <h3>Baby Equipment</h3>
+          <p>Baby cot available upon request.</p>
+
+          <h3>Late Check-out</h3>
+          <p>Late check-out available upon request (subject to availability).</p>
+        </div>
+        <div class="lang-content" data-lang="gr">
+          <h2><i class="fas fa-concierge-bell"></i>Έξτρα Υπηρεσίες</h2>
+
+          <h3>Εξοπλισμός Μωρού</h3>
+          <p>Κρεβατάκι μωρού διαθέσιμο κατόπιν αιτήματος.</p>
+
+          <h3>Καθυστερημένη Αναχώρηση</h3>
+          <p>Καθυστερημένη αναχώρηση διαθέσιμη κατόπιν αιτήματος (εφόσον υπάρχει διαθεσιμότητα).</p>
+        </div>
+      </section>
+
+      <!-- Checkout Checklist -->
+      <section class="section">
+        <div class="lang-content active" data-lang="en">
+          <h2><i class="fas fa-clipboard-check"></i>Checkout Checklist</h2>
+          <p>Before you leave, please help us prepare for the next guests:</p>
+          <ul>
+            <li>Take all personal items (chargers, passports, clothes, beach gear).</li>
+            <li>Check drawers, closets, bathroom shelves, under beds/sofas.</li>
+            <li>Empty the fridge/freezer of opened food you won't take.</li>
+            <li>Switch off lights and appliances (kettle, coffee maker, stove/oven).</li>
+            <li>Close and latch all windows, shutters, and balcony doors (Tinos is windy).</li>
+          </ul>
+          <p style="margin-top: 20px">Thank you for staying with us! We'd greatly appreciate your feedback.</p>
+        </div>
+        <div class="lang-content" data-lang="gr">
+          <h2><i class="fas fa-clipboard-check"></i>Checklist Αναχώρησης</h2>
+          <p>Πριν φύγετε, παρακαλώ βοηθήστε μας να προετοιμαστούμε για τους επόμενους επισκέπτες:</p>
+          <ul>
+            <li>Πάρτε όλα τα προσωπικά σας αντικείμενα (φορτιστές, διαβατήρια, ρούχα, είδη παραλίας).</li>
+            <li>Ελέγξτε συρτάρια, ντουλάπες, ράφια μπάνιου, κάτω από κρεβάτια/καναπέδες.</li>
+            <li>Αδειάστε το ψυγείο/καταψύκτη από ανοιγμένα τρόφιμα που δεν θα πάρετε.</li>
+            <li>Κλείστε όλα τα φώτα και τις ηλεκτρικές συσκευές (βραστήρα, καφετιέρα, κουζίνα/φούρνο).</li>
+            <li>Κλείστε και ασφαλίστε όλα τα παράθυρα, τα παντζούρια και τις μπαλκονόπορτες (στην Τήνο φυσάει).</li>
+          </ul>
+          <p style="margin-top: 20px">Ευχαριστούμε που μείνατε μαζί μας! Θα εκτιμούσαμε πολύ τα σχόλιά σας.</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="section" style="text-align: center; margin-top: 50px">
+      <div class="lang-content active" data-lang="en">
+        <p><strong>Steni House Tinos</strong></p>
+        <p>Phone: +306944898468 | Email: info@stenihousetinos.gr</p>
+        <p>
+          <a
+            href="https://www.instagram.com/steni_house_tinos?igsh=MTNhOGdnbDRidmxlMA%3D%3D&utm_source=qr"
+            target="_blank"
+            style="color: #2563eb; text-decoration: none"
+            >Instagram</a
+          >
+          &
+          <a href="https://www.facebook.com/stenihouse" target="_blank" style="color: #2563eb; text-decoration: none"
+            >Facebook</a
+          >
+        </p>
+        <p style="margin-top: 15px; font-size: 0.9rem; color: #6b7280">
+          Thank you for choosing our accommodation. We hope you have a wonderful stay!
+        </p>
+      </div>
+      <div class="lang-content" data-lang="gr">
+        <p><strong>Steni House Tinos</strong></p>
+        <p>Τηλέφωνο: +306944898468 | Email: info@stenihousetinos.gr</p>
+        <p>
+          <a
+            href="https://www.instagram.com/steni_house_tinos?igsh=MTNhOGdnbDRidmxlMA%3D%3D&utm_source=qr"
+            target="_blank"
+            style="color: #2563eb; text-decoration: none"
+            >Instagram</a
+          >
+          &
+          <a href="https://www.facebook.com/stenihouse" target="_blank" style="color: #2563eb; text-decoration: none"
+            >Facebook</a
+          >
+        </p>
+        <p style="margin-top: 15px; font-size: 0.9rem; color: #6b7280">
+          Σας ευχαριστούμε που επιλέξατε το κατάλυμά μας. Ελπίζουμε να έχετε μια υπέροχη διαμονή!
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Language switching functionality
+      let currentLanguage = 'en';
+
+      function switchLanguage(lang) {
+        currentLanguage = lang;
+
+        // Hide all language content
+        document.querySelectorAll('.lang-content').forEach((el) => {
+          el.classList.remove('active');
+        });
+
+        // Show content for selected language
+        document.querySelectorAll(`[data-lang="${lang}"]`).forEach((el) => {
+          el.classList.add('active');
+        });
+
+        // Update language buttons
+        document.querySelectorAll('.lang-btn').forEach((btn) => {
+          btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+      }
+
+      // Copy to clipboard functionality
+      function copyToClipboard(text, message) {
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(() => {
+            alert(message);
+          });
+        } else {
+          // Fallback for older browsers
+          const textArea = document.createElement('textarea');
+          textArea.value = text;
+          document.body.appendChild(textArea);
+          textArea.select();
+          try {
+            document.execCommand('copy');
+            alert(message);
+          } catch (err) {
+            console.error('Failed to copy text: ', err);
+          }
+          document.body.removeChild(textArea);
+        }
+      }
+    </script>
+  </body>
+</html>
